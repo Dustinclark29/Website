@@ -1,0 +1,317 @@
+/* ====================== General ====================== */
+body {
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  color: #000;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+/* ====================== Hero ====================== */
+.hero {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-start; 
+  padding-top: 60px; 
+  text-align: center;
+  color: #000;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.hero.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logo-behind-heading {
+  width: 400px;
+  height: 400px;
+  opacity: 10;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 5px 0;
+  z-index: 1;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 0 0 5px 0;
+  z-index: 1;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #ecb500;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 20px;
+  z-index: 1;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #F56B8C;
+}
+
+/* ====================== Navigation ====================== */
+nav {
+  background: transparent;
+  text-align: center;
+  padding: 12px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav a {
+  color: #000;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 25px;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #F78CA0;
+  transition: width 0.3s;
+}
+
+.home-link {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: #F78CA0;
+}
+
+/* ====================== Container & Grid ====================== */
+.container {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #F78CA0;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* ====================== Cards ====================== */
+.card {
+  background: #5599ff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+              box-shadow 0.6s ease,
+              opacity 0.6s ease;
+  opacity: 0;
+}
+
+.card.show {
+  animation: fadeInUpSmooth 0.8s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+  border: 4px solid #F78CA0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img:hover {
+  transform: scale(1.05) rotate(0.5deg);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+  border: 4px solid #ff00ff;
+}
+
+.card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #F78CA0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 17px;
+  z-index: -1;
+  background: linear-gradient(135deg, #47bbff, #0051ff);
+}
+
+/* Card Animation Keyframes */
+@keyframes fadeInUpSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ====================== Video Background ====================== */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* ====================== Buttons (Next/Prev) ====================== */
+button {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 5px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #eca200, #ffc831);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  background: linear-gradient(135deg, #ffc831, #eca200);
+}
+
+#prevBtn {
+  left: 20px;
+}
+
+#nextBtn {
+  right: 20px;
+}
+
+/* ====================== Responsive ====================== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .btn {
+    padding: 10px 20px;
+  }
+  .logo-behind-heading {
+    width: 400px;
+    height: 400px;
+  }
+  .card img {
+    height: 200px;
+  }
+}
+
+/* ====================== Thank You Section ====================== */
+#TY {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+#thankYouMessage {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 1s ease, transform 1s ease;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.4;
+  max-width: 800px;
+  margin: 0 auto;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.8),
+    0 0 20px rgba(255,0,150,0.6),
+    0 0 30px rgba(0,200,255,0.6);
+}
+
+#thankYouMessage.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
